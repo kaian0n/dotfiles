@@ -1,0 +1,18 @@
+theme = "Luffytaro"
+
+show = [
+    "Host",
+    "Kernel",
+    "Distribution",
+    "DesktopEnvironment",
+    "WindowManager",
+    "Packages",
+    "Shell",
+    "Terminal",
+    "Resolution",
+    "Uptime",
+    "Processor",
+    "ProcessorLoad",
+    "Memory",
+    "Battery"
+]

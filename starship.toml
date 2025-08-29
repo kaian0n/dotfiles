@@ -1,0 +1,74 @@
+# ~/.config/starship.toml
+
+# Colors:
+# Red-Orange: #C7522A - Vibrant rusty orange-red, akin to burnt sienna or a brighter Pantone 7522 C variant; used for error symbol only now, as directory background is changed to uniform tan.
+# Sand:       #E9B489 - Warm beige-tan, evoking desert sand or camel hair, a muted earthy orange; used for initial block, all segments from Apple logo onwards (uniform tan like time field, including directory/path now), success symbol, and transitions/end chevron.
+# Off-White:  #FDF0D5 - Very light peach-beige, nearly white with a subtle warm undertone, like old lace; not used for text foregrounds in tan segments to maintain contrast.
+# Red Sands BG: #772822 - Dark maroon red, background color from iTerm2 Red Sands theme (assumed as Ghostty match); used for Apple logo foreground, directory/path text foreground on tan bg, time text foreground on tan bg, and git/langs text foreground on tan bg for contrast.
+
+format = """
+[░▒▓](#E9B489)\
+[  ](bg:#E9B489 fg:#772822)\
+[](bg:#E9B489 fg:#E9B489)\
+$directory\
+[](fg:#E9B489 bg:#E9B489)\
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$php\
+$time\
+[ ](fg:#E9B489)\
+\n$character"""
+
+[directory]
+style = "fg:#772822 bg:#E9B489"  # Foreground Red Sands BG #772822, background Sand #E9B489 for directory/path text (uniform tan bg like time, with dark text for visibility mirroring Apple logo)
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#E9B489"  # Background Sand #E9B489 for git branch segment (uniform tan like time)
+format = '[[ $symbol $branch ](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for git branch content (dark text on tan for visibility)
+
+[git_status]
+style = "bg:#E9B489"  # Background Sand #E9B489 for git status segment (uniform tan like time)
+format = '[[($all_status$ahead_behind )](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for git status content (dark text on tan for visibility)
+
+[nodejs]
+symbol = ""
+style = "bg:#E9B489"  # Background Sand #E9B489 for NodeJS segment (uniform tan like time)
+format = '[[ $symbol ($version) ](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for NodeJS content (dark text on tan for visibility)
+
+[rust]
+symbol = ""
+style = "bg:#E9B489"  # Background Sand #E9B489 for Rust segment (uniform tan like time)
+format = '[[ $symbol ($version) ](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for Rust content (dark text on tan for visibility)
+
+[golang]
+symbol = ""
+style = "bg:#E9B489"  # Background Sand #E9B489 for Golang segment (uniform tan like time)
+format = '[[ $symbol ($version) ](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for Golang content (dark text on tan for visibility)
+
+[php]
+symbol = ""
+style = "bg:#E9B489"  # Background Sand #E9B489 for PHP segment (uniform tan like time)
+format = '[[ $symbol ($version) ](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for PHP content (dark text on tan for visibility)
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#E9B489"  # Background Sand #E9B489 for time segment (uniform tan)
+format = '[[  $time ](fg:#772822 bg:#E9B489)]($style)'  # Foreground Red Sands BG #772822, background Sand #E9B489 for time content (dark text on tan for visibility, matching the uniform color)
+
+[character]
+success_symbol = "[❯](#E9B489)"  # Sand #E9B489 for successful command prompt symbol
+error_symbol = "[❯](#C7522A)"  # Red-Orange #C7522A for error command prompt symbol

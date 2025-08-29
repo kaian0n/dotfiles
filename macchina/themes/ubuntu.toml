@@ -1,0 +1,33 @@
+# ~/.config/macchina/themes/ubuntu.toml
+
+[palette]
+glyph = '#C7522A'   # Red-Orange (Dune)
+key = '#E9B489'     # Sand
+val = '#FDF0D5'     # Off-White
+sep = '#C7522A'     # Red-Orange (Dune)
+
+[bar]
+left_del = '['
+right_del = ']'
+progress_style = 'bg = "#E95420"' # Orange
+empty_style = 'fg = "#AEA79F"'    # Gray
+
+[logo]
+glyph = '''
+        a8888b.
+       d888888b.
+       8P"YP"Y88
+       8|o||o|88
+       8'   .88
+       8`._.' Y8.
+      d/   \\  `8b.
+      dP     \\  Y8b.
+     d8:     ::88b.
+    d8"       'Y88b
+   :8P           :888
+    8a.         _a88P
+ ._/"Yaa     .| 88P|
+ \\    YP"    `|     `.
+ /     \\.___.d|    .'
+ `--..__)     `._.'
+'''
