@@ -6,7 +6,6 @@ show = [
     "Distribution",
     "DesktopEnvironment",
     "WindowManager",
-    "Packages",
     "Shell",
     "Terminal",
     "Resolution",
