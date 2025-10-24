@@ -1,0 +1,91 @@
+{
+   "logo": {
+      "type": "file",
+      "source": "~/.config/fastfetch/Luffytaro.txt",
+      "color": {
+         "1": "38;2;233;180;137"
+      },
+      "padding": {
+         "left": 2,
+         "right": 4,
+         "top": 0
+      },
+      "printRemaining": true
+   },
+   "display": {
+      "separator": ":",
+      "key": {
+         "type": "string"
+      },
+      "color": {
+         "keys": "38;2;233;180;137",
+         "title": "38;2;233;180;137"
+      },
+      "percent": {
+         "type": 9,
+         "color": {
+            "green": "38;2;233;180;137",
+            "yellow": "38;2;233;180;137",
+            "red": "38;2;119;40;34"
+         }
+      }
+   },
+   "modules": [
+      {
+         "type": "title",
+         "key": "User"
+      },
+      {
+         "type": "os",
+         "key": "OS"
+      },
+      {
+         "type": "host",
+         "key": "kaian0n"
+      },
+      {
+         "type": "kernel",
+         "key": "XNU"
+      },
+      {
+         "type": "uptime",
+         "key": "Uptime"
+      },
+      {
+         "type": "packages",
+         "key": "Packages"
+      },
+      {
+         "type": "shell",
+         "key": "Shell"
+      },
+      {
+         "type": "terminal",
+         "key": "Terminal"
+      },
+      {
+         "type": "cpu",
+         "key": "CPU"
+      },
+      {
+         "type": "gpu",
+         "key": "GPU"
+      },
+      {
+         "type": "memory",
+         "key": "Memory"
+      },
+      {
+         "type": "disk",
+         "key": "Disk"
+      },
+      {
+         "type": "battery",
+         "key": "Battery"
+      },
+      {
+         "type": "display",
+         "key": "Resolution"
+      }
+   ]
+}
