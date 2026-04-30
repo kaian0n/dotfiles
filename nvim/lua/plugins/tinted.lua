@@ -5,26 +5,33 @@ return {
   config = function()
     -- Ensure truecolor
     vim.opt.termguicolors = true
-    vim.opt.syntax = "off" -- Disable legacy Vim syntax to prevent conflicts with Treesitter
-    require("tinted-colorscheme").setup("base24-red-sands", { -- Base scheme, overridden below
-      supports = {
-        tinty = true,
-        tinted_shell = false,
-        live_reload = false,
+    vim.cmd("syntax off") -- Disable legacy Vim syntax to prevent conflicts with Treesitter
+
+    local tinted = require("tinted-nvim")
+    tinted.setup({
+      default_scheme = "base24-red-sands",
+      apply_scheme_on_startup = false,
+      capabilities = {
+        truecolor = true,
+        terminal_colors = true,
+      },
+      ui = {
+        transparent = true,
+        dim_inactive = false,
       },
       highlights = {
-        telescope = true,
-        indentblankline = true,
-        notify = true,
-        ts_rainbow = true, -- Re-enabled for nesting-based bracket/paren discernment
-        cmp = true,
-        illuminate = true,
-        lsp_semantic = true,
-        mini_completion = true,
-        dapui = true,
+        integrations = {
+          telescope = true,
+          notify = true,
+          cmp = true,
+          blink = true,
+          dapui = true,
+          lualine = false,
+        },
+        use_lazy_specs = true,
       },
     })
-    vim.cmd.colorscheme("base24-red-sands") -- Apply base
+
     -- Function to apply all overrides
     local function apply_overrides()
       -- Clear and override linked TS groups to break blue/pink/purple inheritance
@@ -57,6 +64,7 @@ return {
       vim.cmd('hi clear TSTagAttribute') -- Clear core TS for tag attributes
       -- Transparency: Use NONE for full Ghostty inheritance (max transparency)
       vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE", ctermbg = "NONE" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
       vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE" })
       vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE" })
@@ -161,12 +169,17 @@ return {
       vim.api.nvim_set_hl(0, "Visual", { bg = "#242322" })
       vim.api.nvim_set_hl(0, "Search", { bg = "#C7522A", fg = "#FDF0D5" })
     end
-    -- Reapply on BufEnter, LspAttach, ColorScheme, and Syntax to win priority races
+
+    -- Reapply on common highlight-reset events to win priority races.
+    local overrides_group = vim.api.nvim_create_augroup("TintedRedSandsOverrides", { clear = true })
     vim.api.nvim_create_autocmd({ "BufEnter", "LspAttach", "ColorScheme", "Syntax" }, {
-      pattern = {".lua", ".c", ".h", ".html", "*.nix"},
+      group = overrides_group,
+      pattern = "*",
       callback = apply_overrides,
     })
-    -- Initial apply
+
+    tinted.load("base24-red-sands")
     apply_overrides()
   end,
 }
+
